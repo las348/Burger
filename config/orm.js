@@ -1,13 +1,16 @@
 const connection = require("./connection");
 
+// Object for all our SQL statement functions.
+
+// DELETE????
 const orm = {
-    selectAll: (res) => {
-        connection.query(`SELECT * FROM burgers;`, function (err, data) {
+    selectAll: (tableInput, cb) => {
+        let queryString = "SELECT * FROM " + tableInput + ";";
+        connection.query(queryString, function (err, data) {
             if (err) {
-                return res.status(500).end();
+                throw err;
             }
-            console.log(data)
-            res.json({ burgers: data });
+            cb(data);
         });
     },
 
