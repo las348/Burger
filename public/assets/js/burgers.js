@@ -15,7 +15,7 @@ $(function() {
         var new_elem =
           "<li>" +
           burgers[i].id + 
-          ". "+burgers[i].name +
+          ". "+burgers[i].burger_name +
           "<button type='button' class='btn btn-primary devour' data-id='" +
           burgers[i].id +
           "' data-newburger='" +
@@ -42,6 +42,8 @@ $(function() {
         }
     }
   });
+
+
 
 $(document).on("click", ".devour", function(event) {
     var id = $(this).data("id");

@@ -10,6 +10,7 @@ router.get("/", function (req, res) {
 
 router.get("/burgers", function (req, res) {
   burger.selectAll(function (data) {
+    console.log(data);
     res.json({ burgers: data });
   });
 });
