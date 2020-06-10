@@ -40,9 +40,29 @@ $(function() {
         } else {
             notDevouredElem.append(new_elem);
         }
-      }
+    }
+  });
+
+$(document).on("click", ".devour", function(event) {
+    var id = $(this).data("id");
+    var newBurger = $(this).data("newBurger")===true;
+
+    var newBurgerState = {
+        devoured: newBurger
+    };
+
+    // Send the PUT request.
+    $.ajax("/burgers/" + id, {
+      type: "PUT",
+      data: JSON.stringify(newBurgerState),
+      dataType:'json',
+      contentType: 'application/json'
+    }).then(function() {
+      console.log("added", newBurger);
+      // Reload the page to get the updated list
+      location.reload();
     });
-});
+  });
 
     $(".add-burger").on("submit", function(event) {
         // Make sure to preventDefault on a submit event.
@@ -69,3 +89,19 @@ $(function() {
           location.reload();
         });
       });
+
+
+      //DELETE
+      $(document).on("click", ".delete-burger", function(event) {
+        var id = $(this).data("id");
+    
+        // Send the DELETE request.
+        $.ajax("/burgers/" + id, {
+          type: "DELETE"
+        }).then(function() {
+          console.log("deleted burger", id);
+          // Reload the page to get the updated list
+          location.reload();
+        });
+      });
+    });
