@@ -16,7 +16,7 @@ $(function() {
           "<li>" +
           burgers[i].id + 
           ". "+burgers[i].name +
-          "<button class='change-burger' data-id='" +
+          "<button type='button' class='btn btn-primary devour' data-id='" +
           burgers[i].id +
           "' data-newburger='" +
           !burgers[i].devoured +
@@ -31,7 +31,7 @@ $(function() {
         new_elem += "</button>";
   
         new_elem +=
-          "<button class='delete-burger' data-id='" +
+          "<button type='button' class='btn btn-primary delete-burger' data-id='" +
           burgers[i].id +
           "'>DELETE!</button></li>";
   
