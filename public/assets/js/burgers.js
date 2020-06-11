@@ -21,19 +21,16 @@ $(function() {
           "' data-newburger='" +
           !burgers[i].devoured +
           "'>";
+
   
         if (burgers[i].devoured) {
-          new_elem += "BURGER TIME!";
+          new_elem += "DELETE!";
         } else {
           new_elem += "DEVOUR!";
         }
   
         new_elem += "</button>";
-  
-        new_elem +=
-          "<button type='button' class='btn btn-primary delete-burger' data-id='" +
-          burgers[i].id +
-          "'>DELETE!</button></li>";
+
   
         if (burgers[i].devoured) {
             devouredElem.append(new_elem);
