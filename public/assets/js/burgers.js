@@ -62,17 +62,19 @@ $(document).on("click", ".devour", function(event) {
     });
   });
 
+
+  //SUBMIT
     $(".add-burger").on("submit", function(event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
     
         var newburger = {
-          burger_name: $("#ca")
-            .val()
-            .trim(),
-          devoured: $("[name=devoured]:checked")
+          burger_name: $("#burger_name")
             .val()
             .trim()
+        //   devoured: $("[burger_name=devoured]")
+        //     .val()
+        //     .trim()
         };
 
         // Send the POST request.
