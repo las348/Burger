@@ -1,6 +1,5 @@
 //client 
 
-// Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
     $.ajax("/burgers", {
       type: "GET"
@@ -18,13 +17,13 @@ $(function() {
           ". "+burgers[i].burger_name +
           "<button type='button' class='btn btn-primary devour' data-id='" +
           burgers[i].id +
-          "' data-newburger='" +
+          "' data-devourBurger='" +
           !burgers[i].devoured +
           "'>";
 
-  
         if (burgers[i].devoured) {
           new_elem += "DELETE!";
+        //   new_elem += "DELETE!" + "<class='delete-burger'>";
         } else {
           new_elem += "DEVOUR!";
         }
@@ -44,10 +43,10 @@ $(function() {
 
 $(document).on("click", ".devour", function(event) {
     var id = $(this).data("id");
-    var newBurger = $(this).data("newBurger")===true;
+    var devourBurger = $(this).data("devourBurger")===true;
 
     var newBurgerState = {
-        devoured: newBurger
+        devoured: devourBurger
     };
 
     // Send the PUT request.
@@ -57,7 +56,7 @@ $(document).on("click", ".devour", function(event) {
       dataType:'json',
       contentType: 'application/json'
     }).then(function() {
-      console.log("added", newBurger);
+      console.log("changed to devoured", devourBurger);
       // Reload the page to get the updated list
       location.reload();
     });
