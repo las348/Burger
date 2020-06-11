@@ -68,14 +68,11 @@ $(document).on("click", ".devour", function(event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
     
-        var newburger = {
-          burger_name: $("#burger_name")
-            .val()
-            .trim()
-        //   devoured: $("[burger_name=devoured]")
-        //     .val()
-        //     .trim()
-        };
+        const newburger = {
+            burger_name: $("#burger_name").val().trim(),
+            devoured: 0
+          };
+
 
         // Send the POST request.
         $.ajax("/burgers", {
