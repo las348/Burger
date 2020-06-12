@@ -1,55 +1,38 @@
 //client 
+$(document).ready(function () {
 
-$(function () {
   $.ajax("/burgers", {
     type: "GET"
   }).then(function (data) {
-    var devouredElem = $("#devoured");
-    var notDevouredElem = $("#not_devoured");
 
     var burgers = data.burgers;
     var len = burgers.length;
 
     for (var i = 0; i < len; i++) {
-      var new_elem =
-        "<li>" +
-        burgers[i].id +
-        ". " + burgers[i].burger_name +
-        "<button type='button' class='btn btn-primary devour' data-id='" +
-        burgers[i].id +
-        "' data-devourBurger='" +
-        !burgers[i].devoured +
-        "'>";
 
+      var text = "Devour"
+      var elem = $("#not_devoured");
+      var klass = "btn-primary devour"
 
       if (burgers[i].devoured) {
-        new_elem += "<div class='delete-burger'>" + "DELETE!" + "</div>";
-
-        // $sql = "DELETE FROM burgers WHERE delete_burger = ?";
-        //   new_elem += "DELETE!" + "<div class='delete-burger'>";
-      } else {
-        new_elem += "DEVOUR!";
+        text = "Delete";
+        elem = $("#devoured");
+        klass="btn-danger delete-burger"
       }
 
-      new_elem += "</button>";
+      var new_elem = "<div class='row burger-row'><div class='col-md-9 text-center'>"+
+      burgers[i].id+". "+burgers[i].burger_name+"</div><div class='col-md-3 text-center'><button type='button' class='btn "+
+      klass+"' data-id='"+burgers[i].id+"'>"+text+"</button></div></div>"
 
-      // new_elem +=
-      //   "<div class='delete-burger'" +
-      //   burgers[i].id +
-      //   "</div>";
+      elem.append(new_elem)
 
-      if (burgers[i].devoured) {
-        devouredElem.append(new_elem);
-      } else {
-        notDevouredElem.append(new_elem);
-      }
     }
-  });
+  })
 
-//DEVOUR
+  //DEVOUR
   $(document).on("click", ".devour", function (event) {
     var id = $(this).data("id");
- 
+
     var newBurgerState = {
       devoured: 1
     };
@@ -74,8 +57,8 @@ $(function () {
 
     var newburger = {
       burger_name: $(".add-burger [name=burger_name]")
-      .val()
-      .trim()
+        .val()
+        .trim()
     };
 
     $.ajax("/burgers", {
@@ -92,13 +75,13 @@ $(function () {
 
 
   //DELETE
-  $(document).on("click", ".delete-burger", function(event) {
+  $(document).on("click", ".delete-burger", function (event) {
     var id = $(this).data("id");
 
     // Send the DELETE request.
     $.ajax("/burgers/" + id, {
       type: "DELETE"
-    }).then(function() {
+    }).then(function () {
       console.log("deleted burger", id);
       // Reload the page to get the updated list
       location.reload();
