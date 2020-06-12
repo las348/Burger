@@ -1,7 +1,7 @@
 const connection = require("./connection");
 
 // In order to write the query, we need 3 question marks.
-// The above helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
+// The BELOW helper function loops through and creates an array of question marks - ["?", "?", "?"] - and turns it into a string.
 // ["?", "?", "?"].toString() => "?,?,?";
 function printQuestionMarks(num) {
     var arr = [];
@@ -36,7 +36,6 @@ function objToSql(ob) {
 }
 
 // Object for all our SQL statement functions.
-// DELETE????
 const orm = {
     selectAll: (tableInput, cb) => {
         let queryString = "SELECT * FROM " + tableInput + ";";
@@ -49,6 +48,7 @@ const orm = {
     },
 
     insertOne: function (table, cols, vals, cb) {
+
         var queryString = "INSERT INTO " + table;
 
         queryString += " (";
