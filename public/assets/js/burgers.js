@@ -17,12 +17,12 @@ $(document).ready(function () {
       if (burgers[i].devoured) {
         text = "Delete";
         elem = $("#devoured");
-        klass="btn-danger delete-burger"
+        klass = "btn-danger delete-burger"
       }
 
-      var new_elem = "<div class='row burger-row'><div class='col-md-9 text-center'>"+
-      burgers[i].id+". "+burgers[i].burger_name+"</div><div class='col-md-3 text-center'><button type='button' class='btn "+
-      klass+"' data-id='"+burgers[i].id+"'>"+text+"</button></div></div>"
+      var new_elem = "<div class='row burger-row'><div class='col-md-9 text-center'>" +
+        burgers[i].id + ". " + burgers[i].burger_name + "</div><div class='col-md-3 text-center'><button type='button' class='btn " +
+        klass + "' data-id='" + burgers[i].id + "'>" + text + "</button></div></div>"
 
       elem.append(new_elem)
 
