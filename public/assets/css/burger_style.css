@@ -1,0 +1,20 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.submit {
+    margin: 10px;
+}
+
+img {
+    width: 25%;
+}
+
+.enter_section {
+    margin: 10px;
+}
+
+.burger-row {
+    margin: 10px;
+}
